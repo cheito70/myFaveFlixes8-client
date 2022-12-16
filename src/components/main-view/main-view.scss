@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+    
+  }
+  .main-view{
+    
+    width: 100%;
+    /*height: 100vh;*/
+    background: #c5d7fa;
+  }
+  
+  .bg-navColor{
+    background: #2c68d6;
+  }
+  
+  .regCard {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    background:white;
+    color: black;
+  }
+
+  .movieCard {
+    background: #fff;
+  }
+  
+  .regButton {
+    width: 100%;
+    display: block;
+  }

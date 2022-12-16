@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+  }
+  .regContainer{
+    background: #b5cfff;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .bg-navColor{
+    background: #2c68d6;
+  }
+  
+  .regCard {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    background:white;
+    color: black;
+  }
+  
+  .regButton {
+    width: 100%;
+    display: block;
+  }
