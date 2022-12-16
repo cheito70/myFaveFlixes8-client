@@ -2,6 +2,7 @@
   "name": "myfaveflixes8-client",
   "version": "1.0.0",
   "description": "Movie App for Your Favorite Movies",
+  "default": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,5 +19,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2"
   }
 }
