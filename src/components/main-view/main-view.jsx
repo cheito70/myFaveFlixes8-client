@@ -140,7 +140,6 @@ handleFavorite = (movieId, action) => {
              <NavBar user={user} />
              <Container>
                <Row className="main-view justify-content-md-center">
-            
                  <Route
                   exact
                   path='/'
