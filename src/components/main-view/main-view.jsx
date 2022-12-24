@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 
+//Redux imports
+import { connect } from 'react-redux';
+import { setMovies} from '../../actions/actions';
+
 import PropTypes from 'prop-types';
 
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 
 //Views
+import MoviesList from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -42,11 +47,11 @@ export class MainView extends React.Component {
         }
     }
 
-setSelectedMovie(movie) {
+/*setSelectedMovie(movie) {
     this.setState({
         selectedMovie: movie,
     });
-}
+}*/
 
 //Function updates 'user' property in state to particular user if logged in properly
 onLoggedIn(authData) {
@@ -72,11 +77,9 @@ getMovies(token) {
     axios.get ('https://myfaveflixes.herokuapp.com/movies', {
         headers: { Authorization: `Bearer ${token}` }
     })
-    .then(response => {
+    .then((response) => {
         //Assign the result to the state
-        this.setState({
-            movies: response.data
-        });
+        this.props.setmovies(response.data);
     })
     .catch(function (error) {
         console.log(error);
@@ -134,10 +137,13 @@ handleFavorite = (movieId, action) => {
 };
 
     render() {
-        const { movies, user, favoriteMovies } = this.state;
+        //const { movies, user, favoriteMovies } = this.state;
+        let { movies } = this.props;
+        let { user } = this.state;
         return (
             <Router>
              <NavBar user={user} />
+             <Container>
                <Row className="main-view justify-content-md-center">
             
                  <Route
@@ -149,16 +155,18 @@ handleFavorite = (movieId, action) => {
                         <Col>
                         <LoginView
                          md={4}
+                         movies={movies}
                          onLoggedIn={(user) => this.onLoggedIn(user)}
                          />
                         </Col>
                      );
                      if (movies.length === 0) return <div className='main-view' />;
-                     return movies.map((m) => (
+                     /*return movies.map((m) => (
                         <Col md={3} key={m._id}>
                          <MovieCard movie={m} />
                         </Col>
-                     ));
+                     ));*/
+                     return <MoviesList movies={movies} />;
                   }}
                   />
 
@@ -179,7 +187,7 @@ handleFavorite = (movieId, action) => {
 
              <Route
                  path={`/users/${user}`}
-                 render={({ history }) => {
+                 render={({ match, history }) => {
                    if (!user) return <Redirect to="/" />;
                    return (
                      <Col>
@@ -287,10 +295,14 @@ handleFavorite = (movieId, action) => {
           />
              
             </Row>  
-                      
+          </Container>  
         </Router>            
        );
     }
-
 }
 
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+export default connect(mapStateToProps, { setMovies })(MainView);
