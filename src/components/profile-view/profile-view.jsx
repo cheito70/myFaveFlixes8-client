@@ -2,6 +2,8 @@ import React from 'react';
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { setUser, setmovies} from "../../actions/actions";
+import { connect } from "react-redux";
 
 
 //Bootstrap imports
@@ -160,7 +162,7 @@ export class ProfileView extends React.Component {
         alert('works')
     }
     render() {
-        const { movies} = this.props;
+        const { movies, user } = this.props;
         const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
 
         const myFavoriteMovies = [];
@@ -293,8 +295,14 @@ export class ProfileView extends React.Component {
         </Card>
     </Container>
      );
-
   }
-
-
 }
+
+let mapStateToProps = (state)=> {
+  return {
+    user: state.user,
+    movies: state.movies,
+  };
+};
+
+export default connect(mapStateToProps, { setUser, setMovies})(ProfileView);
