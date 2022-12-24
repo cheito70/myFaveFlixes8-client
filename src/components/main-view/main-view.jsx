@@ -47,11 +47,6 @@ export class MainView extends React.Component {
         }
     }
 
-/*setSelectedMovie(movie) {
-    this.setState({
-        selectedMovie: movie,
-    });
-}*/
 
 //Function updates 'user' property in state to particular user if logged in properly
 onLoggedIn(authData) {
