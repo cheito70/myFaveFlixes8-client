@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 
 //Views
-import MoviesList from '../movies-list/movies-list';
+import { MoviesList } from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';

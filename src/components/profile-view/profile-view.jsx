@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { setUser, setmovies} from "../../actions/actions";
+import { setUser, setMovies} from "../../actions/actions";
 import { connect } from "react-redux";
 
 
