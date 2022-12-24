@@ -132,14 +132,15 @@ handleFavorite = (movieId, action) => {
 };
 
     render() {
-        //const { movies, user, favoriteMovies } = this.state;
-        let { movies } = this.props;
-        let { user } = this.state;
+        const { movies, user, favoriteMovies } = this.state;
+    
         return (
             <Router>
-             <NavBar user={user} />
-             <Container>
-               <Row className="main-view justify-content-md-center">
+            <NavBar user={user} />
+              <Routes> 
+               <Container>
+               
+                <Row className="main-view justify-content-md-center">
                  <Route
                   exact
                   path='/'
@@ -290,6 +291,7 @@ handleFavorite = (movieId, action) => {
              
             </Row>  
           </Container>  
+          </Routes>
         </Router>            
        );
     }
