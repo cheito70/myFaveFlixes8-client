@@ -2,15 +2,15 @@ import React from 'react';
 import axios from 'axios';
 
 //Redux imports
-import { connect } from 'react-redux';
-import { setMovies} from '../../actions/actions';
+/*import { connect } from 'react-redux';
+import { setMovies} from '../../actions/actions';*/
 
 import PropTypes from 'prop-types';
 
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom';
 
 //Views
-import { MoviesList } from '../movies-list/movies-list';
+//import { MoviesList } from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -73,8 +73,11 @@ getMovies(token) {
         headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
-        //Assign the result to the state
-        this.props.setmovies(response.data);
+        //Assign the result to the stateold code
+        /*this.setState({
+          movies: response.data
+      });*/
+        this.props.setMovies(response.data);
     })
     .catch(function (error) {
         console.log(error);
@@ -297,8 +300,8 @@ handleFavorite = (movieId, action) => {
     }
 }
 
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
   return { movies: state.movies };
 };
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies })(MainView);*/
